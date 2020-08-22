@@ -1,0 +1,40 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    &lt;!&ndash; jQuery library &ndash;&gt;-->
+<!--    <script th:src="@{/js/public/jquery-3.5.1.min.js}"></script>-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form id="formimport" action="" method="post" enctype="multipart/form-data">-->
+
+<!--    <input type="file" th:name="file">-->
+
+<!--    <input th:type="submit" value="Import"/>-->
+<!--</form>-->
+<!--aa-->
+<!--&lt;!&ndash;<tbody th:each="s : ${test}">&ndash;&gt;-->
+<!--&lt;!&ndash;    <p th:text="${s}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;</tbody>&ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/import}" method="post" enctype="multipart/form-data">
+
+    <input type="file" th:name="file">
+
+    <input th:type="submit" value="Import"/>
+</form>
+message :
+<h1 th:text="${message}"></h1>
+</body>
+</html>

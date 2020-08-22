@@ -1,0 +1,33 @@
+<button id='load-du-lieu'>click example</button>
+<p id='noidung'></p>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<script>
+    $(document).ready(function() {
+        $('#load-du-lieu').click(function(e) {
+            e.preventDefault();
+            var url = "http://localhost:8080/api/v1/user";
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost:8080/api/v1/test",
+                data:JSON.stringify( {
+                    "username": "loptruong1",
+                    // "password" : "1",
+                    // "name" : "1",
+                }),
+                success: function(data) {
+                    // console.log(e);
+                   // var user = JSON.parse(data);
+                    $('#noidung').html(data.username +":"+ data.password);
+                },
+                dataType: "json",
+                contentType: "application/json"
+            });
+
+        });
+    });
+
+
+
+</script>

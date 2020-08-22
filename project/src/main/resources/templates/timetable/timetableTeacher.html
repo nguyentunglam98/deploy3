@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>.::Thời khóa biểu của giáo viên::.</title>
+    <link th:href="@{/img/logo.png}" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+
+    <!-- jQuery library -->
+    <script th:src="@{/js/public/jquery-3.5.1.min.js}"></script>
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/public/popper.min.js}"></script>
+    <script th:src="@{/js/public/bootstrap.min.js}"></script>
+    <!--Select2-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet"/>
+    <script th:src="@{/js/public/select2.min.js}"></script>
+    <!--Font-Awesome-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <h2>THỜI KHÓA BIỂU CỦA GIÁO VIÊN</h2>
+            <div class="search row align-items-end">
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 px-0">
+                    <div class="form-group text-left mb-1">
+                        <label>Ngày áp dụng:</label>
+                        <select class="combobox form-control w-75" id="appyDateList">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 px-0">
+                    <div class="form-group text-left mb-1">
+                        <label>Giáo viên:</label>
+                        <select class="combobox form-control w-75" id="teacher">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 px-0">
+                    <div class="form-group text-right mb-1">
+                        <button class="btn btn-search mr-0 mt-3" id="search">Tìm kiếm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scrollable-table">
+            <table class="timetable table-bordered">
+                <thead>
+                <tr class="timtable-title">
+                    <th colspan="2" style="width: 15%">Buổi</th>
+                    <th style="width: 10%">Tiết</th>
+                    <th>Thứ 2</th>
+                    <th>Thứ 3</th>
+                    <th>Thứ 4</th>
+                    <th>Thứ 5</th>
+                    <th>Thứ 6</th>
+                    <th>Thứ 7</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="morning">
+                    <td rowspan="5" colspan="2" class="session"><p>SÁNG</p></td>
+                    <td class="slot">1</td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                </tr>
+                <tr class="morning">
+                    <td class="slot">2</td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                </tr>
+                <tr class="morning">
+                    <td class="slot">3</td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                </tr>
+                <tr class="morning">
+                    <td class="slot">4</td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                </tr>
+                <tr class="morning">
+                    <td class="slot">5</td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                </tr>
+                <tr class="afternoon">
+                    <td rowspan="4" class="session"><p>CHIỀU</p></td>
+                    <td rowspan="2" class="week"><p></p></td>
+                    <td class="slot">1</td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                </tr>
+                <tr class="afternoon">
+                    <td class="slot">2</td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                </tr>
+                <tr class="afternoon isOdd">
+                    <td rowspan="2" class="week"><p></p></td>
+                    <td class="slot">1</td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                </tr>
+                <tr class="afternoon isOdd">
+                    <td class="slot">2</td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                    <td class="data"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <table class="table-err table-bordered hide">
+        </table>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+<div class="modal-loading"></div>
+</body>
+<script type="text/javascript" th:src="@{/js/timetable/timetableTeacher.js}"></script>
+</html>

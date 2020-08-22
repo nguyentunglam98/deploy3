@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>.::Xem yêu cầu thay đổi vi phạm::.</title>
+    <link th:href="@{/img/logo.png}" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+
+    <!-- jQuery library -->
+    <script th:src="@{/js/public/jquery-3.5.1.min.js}"></script>
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/public/popper.min.js}"></script>
+    <script th:src="@{/js/public/bootstrap.min.js}"></script>
+    <!--Select2-->
+    <link rel="stylesheet" th:href="@{/css/select2.min.css}">
+    <script th:src="@{/js/public/select2.min.js}"></script>
+    <!--Font-Awesome-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"/>
+    <script th:src="@{/js/public/moment.min.js}"></script>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
+
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <h2>XEM YÊU CẦU THAY ĐỔI VI PHẠM</h2>
+            <div class="search row align-items-end" >
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 px-0">
+                    <div class="form-group text-left mb-1">
+                        <label>Trạng thái:</label>
+                        <select class="combobox form-control w-75" id="status">
+                            <option value="3">Tất cả</option>
+                            <option value="0" selected>Chưa duyệt</option>
+                            <option value="1">Chấp nhận</option>
+                            <option value="2">Từ chối</option>
+                        </select>
+                    </div>
+                    <div class="form-group text-left mb-1">
+                        <label>Lớp:</label>
+                        <select class="combobox form-control w-75" id="classList"></select>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 px-0">
+                    <div class="form-group text-left mb-1">
+                        <label>Ngày:</label>
+                        <input type="date" class="form-control w-75" id="inputDate">
+                    </div>
+                    <div class="form-group text-left mb-1">
+                        <label>Người yêu cầu thay đổi:</label>
+                        <input type="text" class="form-control w-75" id="createBy" placeholder="Người yêu cầu thay đổi">
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 px-0 text-right">
+                    <button class="btn btn-search mt-3 mr-0" id="search">Tìm kiếm</button>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default" id="viewRequestPage"></div>
+        <div class="table-paging">
+        </div>
+    </div>
+</div>
+
+<!--    Modal confirm-->
+<div class="modal fade" tabindex="-1" role="dialog" id="confirmModal">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center"></div>
+            <div class="modal-footer">
+                <input type="button" id="confirmBtn" class="btn btn-danger" value="XÁC NHẬN"/>
+                <input type="button" class="btn btn-primary" data-dismiss="modal" value="ĐÓNG"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--    Modal Success-->
+<div class="modal fade" tabindex="-1" role="dialog" id="modalSuccess">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center"></div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-primary btn-reload" data-dismiss="modal" value="ĐÓNG"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-loading"></div>
+<div th:replace="fragments/footer :: footer"></div>
+<script type="text/javascript" th:src="@{/js/manageEmulation/viewRequest.js}"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>.::Trang chủ::.</title>
+    <link th:href="@{/img/logo.png}" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <!-- jQuery library -->
+    <script th:src="@{/js/public/jquery-3.5.1.min.js}"></script>
+    <script th:src="@{/js/public/jquery.lazyload.min.js}"></script>
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/public/popper.min.js}"></script>
+    <script th:src="@{/js/public/bootstrap.min.js}"></script>
+    <!--Font-Awesome-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="main-content">
+    <!--Side Photo-->
+    <div class="slider">
+        <div class="slide_viewer">
+            <div class="slide_group">
+                <div class="slide"><img class="lazy" data-original="https://picsum.photos/1200/800/?random"
+                                        title="Silde Photo 1"></div>
+                <div class="slide"><img class="lazy" data-original="https://picsum.photos/1200/800/?random"
+                                        title="Silde Photo 2"></div>
+                <div class="slide"><img class="lazy" data-original="https://picsum.photos/1200/800/?random"
+                                        title="Silde Photo 3"></div>
+            </div>
+        </div>
+        <div class="slide_buttons"></div>
+    </div><!-- End // .slider -->
+    <div class="content-wrap">
+        <div class="container w-1130 d-flex row container-header px-0 m-0 mx-auto">
+            <div class="post-gird card-pin col-md-6 col-sm-12 pr-0"></div>
+            <div class="col-md-6 col-sm-12 d-flex flex-wrap pr-0"></div>
+        </div>
+    </div>
+    <div class="content-wrap pt-0 container-paging">
+        <div class="container w-1130 mx-auto d-flex flex-wrap px-0"></div>
+    </div>
+    <div class="content-wrap py-0">
+        <div class="container w-1130 mx-auto px-0">
+            <div class="table-paging"></div>
+            <h2 class="homepage-message my-3 text-center"></h2>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+<div class="modal-loading"></div>
+</body>
+<script th:src="@{/js/managePost/homePage.js}"></script>
+</html>

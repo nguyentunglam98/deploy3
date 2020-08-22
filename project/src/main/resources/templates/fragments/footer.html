@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <footer class="footer-area footer--light" th:fragment="footer">
+        <div class="footer-big">
+            <!-- start .container -->
+            <div class="container">
+                <div class="row mt-3">
+                    <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
+                            <div class="widget-about">
+                                <img th:src="@{/img/logo.png}" alt="" class="img-fluid">
+                            </div>
+                        <!-- Ends: .footer-widget -->
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="footer-widget">
+                            <div class="footer-menu">
+                                <div class="col-xl-12 col-m-12">
+                                    <div class="footer-info d-flex">
+                                        <div class="info-icon">
+                                            <i class="fa fa-map-marker"></i>
+                                        </div>
+                                        <div class="info-text">
+                                            <h6>Địa chỉ:</h6>
+                                            <p>P.Thịnh Lang - TP.Hòa Binh - Tỉnh Hòa Bình</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 col-m-12">
+                                    <div class="footer-info d-flex">
+                                        <div class="info-icon">
+                                            <i class="fa fa-phone" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="info-text">
+                                            <h6>Điện thoại:</h6>
+                                            <p><a href="tel:02183-855-550">02183 855 550</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 col-m-12">
+                                    <div class="footer-info d-flex">
+                                        <div class="info-icon">
+                                            <i class="fa fa-envelope-open"></i>
+                                        </div>
+                                        <div class="info-text">
+                                            <h6>Email:</h6>
+                                            <p><a href="mailto:th.hov@hoabinh.edu.vn">th.hov@hoabinh.edu.vn</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- end /.footer-menu -->
+                        </div>
+                        <!-- Ends: .footer-widget -->
+                    </div>
+                </div>
+                <!-- end /.row -->
+            </div>
+            <!-- end /.container -->
+        </div>
+        <!-- end /.footer-big -->
+        <div class="copyright-text">
+            <div class="container">
+                <span>© Trường THPT Chuyên Hoàng Văn Thụ 2020 </span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

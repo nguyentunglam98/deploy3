@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>.::Thêm thông tin nội quy::.</title>
+    <link th:href="@{/img/logo.png}" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+
+    <!-- jQuery library -->
+    <script th:src="@{/js/public/jquery-3.5.1.min.js}"></script>
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/public/popper.min.js}"></script>
+    <script th:src="@{/js/public/bootstrap.min.js}"></script>
+    <!--Font-Awesome-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
+</head>
+
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 p-0 mx-auto">
+            <form id="msform">
+                <h2 class="fs-title">Thêm thông tin nội quy</h2>
+                <h3 class="fs-subtitle mx-2">Điền thông tin vào các trường để thêm nội quy mới</h3>
+                <fieldset>
+                    <p class="note">(<span class="text-red">*</span>) Bắt buộc </p>
+                    <div class="form-group text-left">
+                        <label for="description">Mô tả nội quy <span class="text-red">*</span></label>
+                        <input type="text" class="form-control" id="description" placeholder="Mô tả vi phạm">
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="totalGrade">Điểm <span class="text-red">*</span></label>
+                        <input type="number" class="form-control" id="totalGrade" placeholder="1">
+                    </div>
+                    <div class="error addViolationType-err text-left"></div>
+                    <input type="button" name="submit" id="submit" class="submit action-button" value="TẠO"/>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--    Modal Create Success-->
+<div class="modal fade" tabindex="-1" role="dialog" id="createSuccess">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center"></div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-danger" th:href="@{violationList}">DANH SÁCH LỖI</a>
+                <a type="button" class="btn btn-primary" th:href="@{addViolationType}">ĐÓNG</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+<div class="modal-loading"></div>
+</body>
+
+<script type="text/javascript" th:src="@{/js/manageViolation/addViolationType.js}"></script>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>.::Quản lý giáo viên::.</title>
+    <link th:href="@{/img/logo.png}" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+
+    <!-- jQuery library -->
+    <script th:src="@{/js/public/jquery-3.5.1.min.js}"></script>
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/public/popper.min.js}"></script>
+    <script th:src="@{/js/public/bootstrap.min.js}"></script>
+    <!--Font-Awesome-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
+
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <h2>DANH SÁCH GIÁO VIÊN</h2>
+            <div class="search row">
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 px-0">
+                    <div class="form-group text-left mb-1" id="searchByFullName">
+                        <label>Họ và tên:</label>
+                        <input type="text" placeholder="Họ và tên" class="form-control w-75">
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 px-0">
+                    <div class="form-group text-left mb-1">
+                        <label>Thứ tự:</label>
+                        <select class="combobox form-control w-75" id="orderBy">
+                            <option value="0">Giảm dần</option>
+                            <option value="1" selected="selected">Tăng dần</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 px-0">
+                    <div class="form-group text-right mb-1">
+                        <button class="btn btn-search mx-0 mt-3" id="search">Tìm kiếm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-title-2 manageBtn">
+            <div class="row mx-0 justify-content-end">
+                <input type="button" class="btn btn-success ml-2 my-1" data-toggle="modal" onclick="checkTeacher()"
+                       value="Xóa"/>
+                <a th:href="@{createTeacher}" class="btn btn-success ml-2 my-1 mr-0">
+                    <span>Thêm giáo viên</span>
+                </a>
+            </div>
+        </div>
+        <div class="scrollable-table">
+            <table class="table table-bordered">
+                <thead class="thead-light text-center">
+                <tr class="align-items-center">
+                    <th style="width: 6%">
+                    <span class="custom-checkbox">
+                        <input type="checkbox" id="selectAll">
+                        <label for="selectAll"></label>
+                    </span>
+                    </th>
+                    <th style="width: 20%">Giáo viên</th>
+                    <th style="width: 20%">Tên định danh</th>
+                    <th style="width: 15%">SĐT</th>
+                    <th style="width: 25%">Email</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-paging">
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal HTML -->
+<div id="deleteTeacherModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body text-center"></div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-danger" id="deleteTeacher" data-dismiss="modal" value="CÓ">
+                <input type="button" class="btn btn-primary" data-dismiss="modal" value="KHÔNG">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--    Modal Delete Success-->
+<div class="modal fade" tabindex="-1" role="dialog" id="deleteSuccess">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center"></div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-primary" th:href="@{manageTeacher}">ĐÓNG</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-loading"></div>
+<div th:replace="fragments/footer :: footer"></div>
+<script type="text/javascript" th:src="@{/js/manageTeacher/manageTeacher.js}"></script>
+</body>
+</html>

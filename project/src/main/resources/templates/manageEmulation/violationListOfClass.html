@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>.::Danh sách lỗi theo ngày::.</title>
+    <link th:href="@{/img/logo.png}" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+
+    <!-- jQuery library -->
+    <script th:src="@{/js/public/jquery-3.5.1.min.js}"></script>
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/public/popper.min.js}"></script>
+    <script th:src="@{/js/public/bootstrap.min.js}"></script>
+    <!--Select2-->
+    <link rel="stylesheet" th:href="@{/css/select2.min.css}">
+    <script th:src="@{/js/public/select2.min.js}"></script>
+    <!--Font-Awesome-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"/>
+    <script th:src="@{/js/public/moment.min.js}"></script>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
+
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <h2>DANH SÁCH LỖI THEO NGÀY</h2>
+            <div class="search row align-items-end">
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 px-0">
+                    <div class="form-group text-left mb-1">
+                        <label>Lớp:</label>
+                        <select class="combobox form-control w-75" id="classList"></select>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 px-0">
+                    <div class="form-group text-left mb-1">
+                        <label>Ngày:</label>
+                        <input type="date" class="form-control w-75" id="datetime">
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 px-0">
+                    <div class="form-group text-right mb-1 mt-3">
+                        <button class="btn btn-search mr-0" id="search">Tìm kiếm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-title-2 pt-0">
+            <div class="row mx-0 justify-content-end">
+                <a th:href="@{gradingToEmulation}" class="btn btn-success manageBtn mr-0">
+                    <span>Thêm vi phạm mới</span>
+                </a>
+            </div>
+        </div>
+        <div class="violation-by-date"></div>
+        <div class="violation-total-grade mt-3 text-left">
+            <h5 class="d-inline-block mr-2">Tổng điểm trừ:</h5><h5 class="d-inline-block text-red totalGrade"></h5>
+        </div>
+    </div>
+</div>
+
+<!-- Confirm Modal HTML -->
+<div id="editModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Trang chỉnh sửa</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-danger editModalBtn" data-toggle="modal"
+                       id="editModalBtn" data-dismiss="modal" value="">
+                <input type="button" class="btn btn-primary" data-dismiss="modal" value="HỦY">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- History Modal HTML -->
+<div id="historyModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Lịch sử chỉnh sửa</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-primary" data-dismiss="modal" value="ĐÓNG">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--    Modal Confirm Edit-->
+<div class="modal fade" tabindex="-1" role="dialog" id="confirmEdit">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Xác nhận thay đổi</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body text-center"></div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-danger" data-toggle="modal" id="confirmEditBtn"
+                       data-dismiss="modal" value="XÁC NHẬN">
+                <input type="button" class="btn btn-primary" data-dismiss="modal" value="HỦY">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--    Modal Save Success-->
+<div class="modal fade" tabindex="-1" role="dialog" id="saveSuccess">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center"></div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-primary closeModal" value="ĐÓNG"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-loading"></div>
+<div th:replace="fragments/footer :: footer"></div>
+<script type="text/javascript" th:src="@{/js/manageEmulation/violationListOfClass.js}"></script>
+</body>
+</html>

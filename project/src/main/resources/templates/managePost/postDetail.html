@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link th:href="@{/img/logo.png}" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+
+    <!-- jQuery library -->
+    <script th:src="@{/js/public/jquery-3.5.1.min.js}"></script>
+    <script th:src="@{/js/public/jquery.lazyload.min.js}"></script>
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/public/popper.min.js}"></script>
+    <script th:src="@{/js/public/bootstrap.min.js}"></script>
+    <!--Select2-->
+    <link rel="stylesheet" th:href="@{/css/select2.min.css}">
+    <script th:src="@{/js/public/select2.min.js}"></script>
+    <!--Font-Awesome-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"/>
+    <script th:src="@{/js/public/moment.min.js}"></script>
+    <link th:href="@{/js/public/ckeditor/contents.css}" rel="stylesheet"/>
+    <link th:href="@{/js/public/ckeditor/plugins/easyimage/styles/easyimage.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
+
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <h2></h2>
+            <h5 class="post-date d-inline mr-2"></h5>
+        </div>
+        <div class="panel panel-default mt-5">
+            <div class="post-content-text">
+            </div>
+            <div class="post-action text-right">
+                <span id="newsletterId" th:text="${newsletterId}" class="hide"></span>
+                <div class="status" hidden></div>
+                <div class="author" hidden></div>
+                <input type="button" class="btn btn-outline-danger btn-delete" value="ẨN BÀI">
+                <input type="button" class="btn btn-outline-primary btn-edit hide" value="CHỈNH SỬA">
+                <input type="button" class="btn btn-outline-primary btn-accept hide" value="ĐĂNG BÀI">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--    Modal confirm-->
+<div class="modal fade" tabindex="-1" role="dialog" id="confirmModal">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center"></div>
+            <div class="modal-footer">
+                <input type="button" id="confirmBtn" class="btn btn-danger" value="XÁC NHẬN"/>
+                <input type="button" class="btn btn-primary" data-dismiss="modal" value="ĐÓNG"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--    Modal Success-->
+<div class="modal fade" tabindex="-1" role="dialog" id="modalSuccess">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center"></div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-primary btn-reload" data-dismiss="modal" value="ĐÓNG"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-loading"></div>
+<div th:replace="fragments/footer :: footer"></div>
+<script type="text/javascript" th:src="@{/js/managePost/postDetail.js}"></script>
+</body>
+</html>

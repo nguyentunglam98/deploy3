@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/img/logo.png}" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <title>.::Trường THPT Chuyên Hoàng Văn Thụ::.</title>
+
+    <!-- jQuery library -->
+    <script th:src="@{/js/public/jquery-3.5.1.min.js}"></script>
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/public/popper.min.js}"></script>
+    <script th:src="@{/js/public/bootstrap.min.js}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!--Font-Awesome-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
+</head>
+
+<body>
+<!--Header-->
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-lg top-navbar d-block myHeader" data-toggle="sticky-onscroll">
+        <div class="container justify-content-end header-hotline flex-nowrap">
+            <!--Search-->
+            <div class="widget_search">
+                <form aria-label="Search" role="search" title="Tìm kiếm bài viết" class="m-0">
+                    <input type="search" class="form-control form-search" placeholder="Tìm kiếm" id="searchLetter">
+                </form>
+            </div>
+            <!--Contact Number-->
+            <div class="d-flex align-items-center contact-number">
+                <span class="icon">
+                    <a href="#" class="icon-link"><i class="fa fa-phone" aria-hidden="true"></i></a>
+                </span>
+                <div class="icon-text">
+                    <a href="#" class="number-link"><span>02183 855 550</span></a>
+                </div>
+            </div>
+        </div>
+        <!--        <div class="container">-->
+        <!--            <div class="navbar-brand">-->
+        <!--                <a th:href="@{/}">-->
+        <!--                    <img class="logo-img" th:src="@{/img/logo.png}" title=".::Trường THPT Chuyên Hoàng Văn Thụ::."/>-->
+        <!--                </a>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <div class="container justify-content-end position-relative px-0">
+            <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarMenu"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars text-white"></i>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
+                <ul class="navbar-nav pull-left">
+                    <li class="nav-item">
+                        <a class="nav-link homePage" th:href="@{/}">TRANG CHỦ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">THỜI KHÓA BIỂU <i
+                                class="fa fa-caret-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" th:href="@{timetableClass}">Thời khóa biểu của lớp</a>
+                            <a class="dropdown-item" th:href="@{timetableTeacher}">Thời khóa biểu của giáo viên</a>
+                            <a id="scheduleManagerMenu" class="dropdown-item" th:href="@{manageTimetable}">Thay đổi thời
+                                khóa biểu</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">TRỰC TUẦN <i
+                                class="fa fa-caret-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item hide" th:href="@{gradingToEmulation}" id="gradingToEmulationMenu">Chấm
+                                điểm thi đua</a>
+                            <a class="dropdown-item" th:href="@{violationListOfClass}">Xem danh sách vi phạm theo ngày</a>
+                            <a class="dropdown-item hide" th:href="@{viewRequest}" id="viewRequestMenu">Xem yêu cầu thay đổi vi phạm</a>
+                            <a class="dropdown-item" th:href="@{history}">Xem lịch sử vi phạm</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">NỘI QUY <i
+                                class="fa fa-caret-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" th:href="@{violationList}">Xem nội quy trường học</a>
+                            <a class="dropdown-item" th:href="@{assignEmulation}">Xem phân công trực tuần</a>
+                            <a class="dropdown-item" th:href="@{manageViolationEnteringTime}">Xem thời gian thực thi
+                                chấm điểm</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">XẾP HẠNG <i
+                                class="fa fa-caret-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" th:href="@{rankByWeek}">Xếp hạng theo tuần</a>
+                            <a class="dropdown-item" th:href="@{rankByMonth}">Xếp hạng theo tháng</a>
+                            <a class="dropdown-item" th:href="@{rankBySemester}">Xếp hạng theo học kỳ</a>
+                            <a class="dropdown-item" th:href="@{rankByYear}">Xếp hạng theo năm</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown hide" id="sendPostMenu">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">GỬI BÀI TRUYỀN THÔNG <i
+                                class="fa fa-caret-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" th:href="@{createPost}">Tạo bài viết mới</a>
+                            <a class="dropdown-item" th:href="@{managePost}">Xem lịch sử đăng bài</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown hide" id="adminMenu">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">QUẢN LÝ<i
+                                class="fa fa-caret-down"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a class="dropdown-item" href="#">Quản lý tài khoản</a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" th:href="@{manageAccount}">Quản lý tài khoản</a></li>
+                                    <li><a class="dropdown-item" th:href="@{createAccount}">Tạo tài khoản</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Quản lý giáo viên</a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" th:href="@{manageTeacher}">Quản lý giáo viên</a></li>
+                                    <li><a class="dropdown-item" th:href="@{createTeacher}">Thêm giáo viên</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Quản lý lớp</a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" th:href="@{manageClass}">Quản lý lớp</a></li>
+                                    <li><a class="dropdown-item" th:href="@{createClass}">Thêm lớp</a></li>
+                                    <li><a class="dropdown-item" th:href="@{createGifftedClass}">Thêm hệ chuyên</a></li>
+                                    <li><a class="dropdown-item" th:href="@{deleteGifftedClass}">Xóa hệ chuyên</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Quản lý năm học</a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" th:href="@{schoolYearList}">Quản lý năm học</a></li>
+                                    <li><a class="dropdown-item" th:href="@{addSchoolYear}">Thêm năm học mới</a></li>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Quản lý bài viết</a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" th:href="@{createPost}">Tạo bài viết mới</a></li>
+                                    <li><a class="dropdown-item" th:href="@{managePost}">Quản lý bài viết</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item" id="loginMenu">
+                        <a class="nav-link" th:href="@{login}">ĐĂNG NHẬP</a>
+                    </li>
+                    <li class="nav-item dropdown" id="loginSuccessMenu">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"></a>
+                        <div class="dropdown-menu">
+                            <a th:href="@{userInformation}" class="dropdown-item">Thông tin tài khoản</a>
+                            <a th:href="@{changePassword}" class="dropdown-item">Đổi mật khẩu</a>
+                            <a th:href="@{/}" id="logout" class="dropdown-item"><span class="font-500">ĐĂNG XUẤT</span></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--END Header-->
+</body>
+</html>

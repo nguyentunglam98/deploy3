@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>Form login</div>
+        <form th:action="@{/login}" method="put">
+            <div>
+                <table>
+                    <tr>
+                        <th>Họ tên:</th>
+                        <th><input type="text" name="name"/></th>
+                    <tr>
+                    <tr>
+                        <th>Mật khẩu:</th>
+                        <th><input type="password" name="password"/></th>
+                    <tr>
+                    <tr>
+                        <th><input type="submit">Click Me!</input></th>
+                </tr>
+                </table>
+            </div>
+        </form>
+</body>
+<script>
+    function addNew(data) {
+        $.ajax({
+            //url: '${APIurl}',
+            url: 'http://localhost:8080/new',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                console.log(result);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+</script>
+</html>

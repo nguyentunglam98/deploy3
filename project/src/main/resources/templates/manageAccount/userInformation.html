@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>.::Thông tin cá nhân::.</title>
+    <link th:href="@{/img/logo.png}" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+
+    <!-- jQuery library -->
+    <script th:src="@{/js/public/jquery-3.5.1.min.js}"></script>
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/public/popper.min.js}"></script>
+    <script th:src="@{/js/public/bootstrap.min.js}"></script>
+    <!--Font-Awesome-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
+</head>
+
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 p-0 mx-auto">
+            <form id="msform">
+                <h2 class="fs-title">Thông tin cá nhân</h2>
+                <fieldset>
+                    <p class="note">(<span class="text-red">*</span>) Bắt buộc </p>
+                    <div class="form-group text-left">
+                        <label for="username">Tên đăng nhập <span class="text-red">*</span></label>
+                        <input type="text" class="form-control" id="username" value="" disabled>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="roleName">Chức vụ <span class="text-red">*</span></label>
+                        <input type="text" class="form-control" id="roleName" value="" disabled>
+                    </div>
+                    <div class="form-group text-left" id="fullNameDiv">
+                        <label for="fullName">Họ và tên</label>
+                        <input type="text" class="form-control" id="fullName" value="" disabled>
+                    </div>
+                    <div class="form-group text-left" id="phoneDiv">
+                        <label for="phone">SĐT</label>
+                        <input type="text" class="form-control" id="phone" value="" disabled>
+                    </div>
+                    <div class="form-group text-left" id="emailDiv">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email" value="" disabled>
+                    </div>
+                    <div class="form-group text-left" id="classDiv">
+                        <label for="className">Lớp</label>
+                        <input type="text" class="form-control" id="className" value="" disabled>
+                    </div>
+                    <div class="error userInfo-err text-left"></div>
+                    <div class="form-group ">
+                        <input type="button" class="btn btn-customer" id="editInfo" data-toggle="modal"
+                               data-target="" value="CHỈNH SỬA"/>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--    Modal Edit Information Success-->
+<div class="modal fade" tabindex="-1" role="dialog" id="editInfoSuccess">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+            </div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-primary" th:href="@{userInformation}">ĐÓNG</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+<div class="modal-loading"></div>
+</body>
+
+<script type="text/javascript" th:src="@{/js/manageAccount/userInformation.js}"></script>
+</html>

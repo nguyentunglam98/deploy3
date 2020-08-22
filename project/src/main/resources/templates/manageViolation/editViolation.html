@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>.::Chỉnh sửa thông tin lỗi vi phạm::.</title>
+    <link th:href="@{/img/logo.png}" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+
+    <!-- jQuery library -->
+    <script th:src="@{/js/public/jquery-3.5.1.min.js}"></script>
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/public/popper.min.js}"></script>
+    <script th:src="@{/js/public/bootstrap.min.js}"></script>
+    <!--Font-Awesome-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
+</head>
+
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 p-0 mx-auto">
+            <form id="msform">
+                <h2 class="fs-title">Thông tin lỗi vi phạm</h2>
+                <fieldset>
+                    <p class="note">(<span class="text-red">*</span>) Bắt buộc </p>
+                    <div class="form-group text-left">
+                        <label for="violationTypeName">Nội quy <span class="text-red">*</span></label>
+                        <select class="form-control" id="violationTypeName">
+                            <option value="0" selected>-- Chọn nội quy ---</option>
+                        </select>
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="substractGrade">Điểm trừ <span class="text-red">*</span></label>
+                        <input type="number" class="form-control" id="substractGrade" value="">
+                    </div>
+                    <div class="form-group text-left">
+                        <label for="description">Mô tả vi phạm <span class="text-red">*</span></label>
+                        <textarea class="form-control" id="description" rows="3" value=""></textarea>
+                    </div>
+                    <div class="error violation-err text-left"></div>
+                    <button type="button" class="btn btn-customer" id="editInfo">CHỈNH SỬA</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--    Modal Edit Information Success-->
+<div class="modal fade" tabindex="-1" role="dialog" id="editInfoSuccess">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center"></div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-primary" th:href="@{violationList}">ĐÓNG</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+<div class="modal-loading"></div>
+</body>
+
+<script type="text/javascript" th:src="@{/js/manageViolation/editViolation.js}"></script>
+</html>

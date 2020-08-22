@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>.::Chấm điểm thi đua::.</title>
+    <link th:href="@{/img/logo.png}" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+
+    <!-- jQuery library -->
+    <script th:src="@{/js/public/jquery-3.5.1.min.js}"></script>
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/public/popper.min.js}"></script>
+    <script th:src="@{/js/public/bootstrap.min.js}"></script>
+    <!--Select2-->
+    <link rel="stylesheet" th:href="@{/css/select2.min.css}">
+    <script th:src="@{/js/public/select2.min.js}"></script>
+    <!--Font-Awesome-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"/>
+    <script th:src="@{/js/public/moment.min.js}"></script>
+
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
+
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <h2>CHẤM ĐIỂM THI ĐUA</h2>
+            <div class="search row">
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 px-0">
+                    <div class="form-group text-left mb-1">
+                        <label>Lớp:</label>
+                        <select class="form-control w-75" id="classList"></select>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 px-0">
+                    <div class="form-group mb-1">
+                        <label>Ngày:</label>
+                        <input type="date" class="form-control w-75" id="datetime">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default"></div>
+        <div class="saveResult text-left">
+            <input type="button" class="btn btn-customer my-3" data-toggle="modal" id="saveGrading" value="LƯU"/>
+            <div class="text-red font-500 gradingToEmulation-err mt-4 d-inline-block"></div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Confirm Modal HTML -->
+<div id="confirmModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Xác nhận lưu</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-danger" data-toggle="modal" data-target="#saveSuccess"
+                       id="confirm" data-dismiss="modal" value="XÁC NHẬN">
+                <input type="button" class="btn btn-primary" data-dismiss="modal" value="HỦY">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--    Modal Save Success-->
+<div class="modal fade" tabindex="-1" role="dialog" id="saveSuccess">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center"></div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-primary" data-dismiss="modal" value="ĐÓNG">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-loading"></div>
+<div th:replace="fragments/footer :: footer"></div>
+<script type="text/javascript" th:src="@{/js/manageEmulation/gradingToEmulation.js}"></script>
+</body>
+</html>

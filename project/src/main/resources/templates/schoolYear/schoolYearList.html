@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>.::Quản lý năm học::.</title>
+    <link th:href="@{/img/logo.png}" rel="shortcut icon" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+
+    <!-- jQuery library -->
+    <script th:src="@{/js/public/jquery-3.5.1.min.js}"></script>
+    <!--Table-->
+    <link rel="stylesheet" th:href="@{/css/dataTables.bootstrap4.min.css}">
+    <script th:src="@{/js/public/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/js/public/dataTables.bootstrap4.min.js}"></script>
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/public/popper.min.js}"></script>
+    <script th:src="@{/js/public/bootstrap.min.js}"></script>
+    <!--Font-Awesome-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/functions.js}"></script>
+
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <h2>DANH SÁCH NĂM HỌC</h2>
+        </div>
+        <div class="table-title-2 manageBtn">
+            <div class="row mx-0 justify-content-end">
+                <a th:href="@{addSchoolYear}" class="btn btn-success mr-0">
+                    <span>Thêm năm học</span>
+                </a>
+            </div>
+        </div>
+        <div class="scrollable-table">
+            <table class="table table-bordered text-center" id="tableSchoolYear">
+                <thead class="thead-light">
+                <tr class="align-items-center">
+                    <th>STT</th>
+                    <th>Tên năm học</th>
+                    <th>Ngày bắt đầu</th>
+                    <th>Ngày kết thúc</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-paging">
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal HTML -->
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-danger" data-toggle="modal"
+                       id="btnDeleteModal" data-target="#deleteSuccess" data-dismiss="modal" value="CÓ">
+                <input type="button" class="btn btn-primary" data-dismiss="modal" value="KHÔNG">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--    Modal Delete Success-->
+<div class="modal fade" tabindex="-1" role="dialog" id="deleteSuccess">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center"></div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-primary" th:href="@{schoolYearList}">ĐÓNG</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-loading"></div>
+
+<div th:replace="fragments/footer :: footer"></div>
+<script type="text/javascript" th:src="@{/js/schoolYear/schoolYearList.js}"></script>
+</body>
+</html>
